@@ -5,7 +5,7 @@ namespace Processor.Servicies;
 
 public class ProcessorService : IProcessorService
 {
-    private bool _wait {get; set;}
+    private bool _isWaitingForType1 {get; set;}
     public async Task ProcessEvent(Event e) {
         Console.WriteLine("Recieved event type: " + e.Type.ToString());
         await CreateIncident(e);
@@ -14,9 +14,9 @@ public class ProcessorService : IProcessorService
 
     public async Task<Incident> CreateIncident(Event e) {
         if (isIncidentSimple(e)) {
-            if (_wait) {
+            if (_isWaitingForType1) {
                 Console.WriteLine("Composite");
-                _wait = false;
+                _isWaitingForType1 = false;
                 return new Incident {
                     Id = Guid.NewGuid(),
                     Type = IncidentTypeEnum.Simple,
@@ -33,8 +33,8 @@ public class ProcessorService : IProcessorService
             }
         }
         if (isIncidentComposite(e)) {
-            if (!_wait) {
-                _wait = true;
+            if (!_isWaitingForType1) {
+                _isWaitingForType1 = true;
 
                 await Task.Delay(20000);
             }
