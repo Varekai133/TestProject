@@ -1,31 +1,31 @@
 {
   "Version": 1,
-  "Hash": "ANb+/lqI2mvay6kfqUCfzafOAf7STWOPMFFkBkvDk30=",
+  "Hash": "cesp5EmrKGrk0pLfqBd2k2U4Yvp2iwSknFwME4iR3Ok=",
   "Source": "EventControlSystem",
   "BasePath": "_content/EventControlSystem",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
     {
-      "Identity": "C:\\Code\\TestProj\\Generator\\Generator.csproj",
+      "Identity": "C:\\Projects\\TestProj\\Generator\\Generator.csproj",
       "Version": 2,
       "Source": "Generator",
       "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
-      "AdditionalPublishProperties": "",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
       "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
       "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
-      "AdditionalBuildProperties": "",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
       "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
     },
     {
-      "Identity": "C:\\Code\\TestProj\\Processor\\Processor.csproj",
+      "Identity": "C:\\Projects\\TestProj\\Processor\\Processor.csproj",
       "Version": 2,
       "Source": "Processor",
       "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
-      "AdditionalPublishProperties": "",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
       "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
       "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
-      "AdditionalBuildProperties": "",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
       "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
     }
   ],

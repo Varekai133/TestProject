@@ -3,6 +3,6 @@ using Generator.Models;
 namespace Generator.Servicies;
 
 public interface IGeneratorService {
-    void GenerateEvent();
-    void SendEventToProcessor(Event e);
+    Task GenerateEvent();
+    Task SendEventToProcessor(Event e);
 }

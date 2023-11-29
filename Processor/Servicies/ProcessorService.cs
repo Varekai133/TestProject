@@ -3,7 +3,7 @@ namespace Processor.Servicies;
 public class ProcessorService : IProcessorService
 {
     public void ProcessEvents() {
-        Console.WriteLine("Process event");
+        //Console.WriteLine("Process event");
     }
 
     public void CreateIncident(){
