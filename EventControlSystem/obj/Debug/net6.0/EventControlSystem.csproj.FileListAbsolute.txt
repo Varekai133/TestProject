@@ -82,3 +82,5 @@ C:\Projects\TestProj\EventControlSystem\obj\Debug\net6.0\refint\EventControlSyst
 C:\Projects\TestProj\EventControlSystem\obj\Debug\net6.0\EventControlSystem.pdb
 C:\Projects\TestProj\EventControlSystem\obj\Debug\net6.0\EventControlSystem.genruntimeconfig.cache
 C:\Projects\TestProj\EventControlSystem\obj\Debug\net6.0\ref\EventControlSystem.dll
+C:\Projects\TestProj\EventControlSystem\bin\Debug\net6.0\SharedClassLibrary.dll
+C:\Projects\TestProj\EventControlSystem\bin\Debug\net6.0\SharedClassLibrary.pdb

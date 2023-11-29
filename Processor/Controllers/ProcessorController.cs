@@ -1,5 +1,6 @@
 using Processor.Servicies;
 using Microsoft.AspNetCore.Mvc;
+using SharedClassLibrary.Models;
 
 namespace Processor.Controllers;
 
@@ -13,13 +14,13 @@ public class ProcessorController : ControllerBase
         _processorService = processorService;
     }
 
-    [HttpGet("ProcessEvents")]
-    public void ProcessEvents() {
-        _processorService.ProcessEvents();
+    [HttpPost("ProcessEvents")]
+    public void ReceiceEvent([FromBody] Event e) {
+        _processorService.ProcessEvent(e);
     }
 
-    [HttpGet("GetListOfIncidents")]
-    public void GetListOfIncidents() {
+    // [HttpGet("GetListOfIncidents")]
+    // public void GetListOfIncidents() {
         
-    }
+    // }
 }

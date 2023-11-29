@@ -93,6 +93,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "SharedClassLibrary": "1.0.0",
           "Swashbuckle.AspNetCore": "6.5.0"
         },
         "compile": {
@@ -109,6 +110,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "SharedClassLibrary": "1.0.0",
           "Swashbuckle.AspNetCore": "6.5.0"
         },
         "compile": {
@@ -120,6 +122,16 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+      },
+      "SharedClassLibrary/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/SharedClassLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SharedClassLibrary.dll": {}
+        }
       }
     }
   },
@@ -471,6 +483,11 @@
       "type": "project",
       "path": "../Processor/Processor.csproj",
       "msbuildProject": "../Processor/Processor.csproj"
+    },
+    "SharedClassLibrary/1.0.0": {
+      "type": "project",
+      "path": "../SharedClassLibrary/SharedClassLibrary.csproj",
+      "msbuildProject": "../SharedClassLibrary/SharedClassLibrary.csproj"
     }
   },
   "projectFileDependencyGroups": {

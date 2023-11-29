@@ -1,4 +1,4 @@
-using Generator.Models;
+using SharedClassLibrary.Models;
 
 namespace Generator.Servicies;
 

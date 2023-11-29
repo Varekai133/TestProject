@@ -1,7 +1,9 @@
+using SharedClassLibrary.Models;
+
 namespace Processor.Servicies;
 
 public interface IProcessorService {
-    void ProcessEvents();
+    Task ProcessEvent(Event e);
     void CreateIncident();
     void SaveIncidentToDb();
     bool isIncidentSimple();

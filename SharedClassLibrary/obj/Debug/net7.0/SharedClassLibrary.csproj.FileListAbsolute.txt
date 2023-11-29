@@ -1,0 +1,11 @@
+C:\Projects\TestProj\SharedClassLibrary\obj\Debug\net7.0\SharedClassLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\TestProj\SharedClassLibrary\obj\Debug\net7.0\SharedClassLibrary.AssemblyInfoInputs.cache
+C:\Projects\TestProj\SharedClassLibrary\obj\Debug\net7.0\SharedClassLibrary.AssemblyInfo.cs
+C:\Projects\TestProj\SharedClassLibrary\obj\Debug\net7.0\SharedClassLibrary.csproj.CoreCompileInputs.cache
+C:\Projects\TestProj\SharedClassLibrary\bin\Debug\net7.0\SharedClassLibrary.deps.json
+C:\Projects\TestProj\SharedClassLibrary\bin\Debug\net7.0\SharedClassLibrary.dll
+C:\Projects\TestProj\SharedClassLibrary\bin\Debug\net7.0\SharedClassLibrary.pdb
+C:\Projects\TestProj\SharedClassLibrary\obj\Debug\net7.0\SharedClassLibrary.dll
+C:\Projects\TestProj\SharedClassLibrary\obj\Debug\net7.0\refint\SharedClassLibrary.dll
+C:\Projects\TestProj\SharedClassLibrary\obj\Debug\net7.0\SharedClassLibrary.pdb
+C:\Projects\TestProj\SharedClassLibrary\obj\Debug\net7.0\ref\SharedClassLibrary.dll

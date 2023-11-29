@@ -1,3 +1,5 @@
+using SharedClassLibrary.Models;
+
 namespace Processor.Servicies;
 
 public class BackgroundIncidentProcessor : BackgroundService
@@ -8,9 +10,8 @@ public class BackgroundIncidentProcessor : BackgroundService
         _processorService = processorService;
     }
     protected override async Task ExecuteAsync(CancellationToken stoppingToken) {
-        while (!stoppingToken.IsCancellationRequested) {
-            _processorService.ProcessEvents();
-            await Task.Delay(2000, stoppingToken);
-        }
+        // while (!stoppingToken.IsCancellationRequested) {
+
+        // }
     }
 }

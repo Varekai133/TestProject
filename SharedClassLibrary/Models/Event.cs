@@ -1,4 +1,4 @@
-namespace Generator.Models;
+namespace SharedClassLibrary.Models;
 
 public class Event {
     public Guid Id {get; set;}

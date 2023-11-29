@@ -88,6 +88,16 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+      },
+      "SharedClassLibrary/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/SharedClassLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SharedClassLibrary.dll": {}
+        }
       }
     }
   },
@@ -429,10 +439,16 @@
         "swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512",
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
+    },
+    "SharedClassLibrary/1.0.0": {
+      "type": "project",
+      "path": "../SharedClassLibrary/SharedClassLibrary.csproj",
+      "msbuildProject": "../SharedClassLibrary/SharedClassLibrary.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "SharedClassLibrary >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.5.0"
     ]
   },
@@ -462,7 +478,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Projects\\TestProj\\SharedClassLibrary\\SharedClassLibrary.csproj": {
+              "projectPath": "C:\\Projects\\TestProj\\SharedClassLibrary\\SharedClassLibrary.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

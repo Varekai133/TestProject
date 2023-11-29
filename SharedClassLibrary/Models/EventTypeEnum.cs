@@ -1,4 +1,4 @@
-namespace Generator.Models;
+namespace SharedClassLibrary.Models;
 
 public enum EventTypeEnum {
     Type1 = 1,

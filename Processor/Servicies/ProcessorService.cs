@@ -1,9 +1,11 @@
+using SharedClassLibrary.Models;
+
 namespace Processor.Servicies;
 
 public class ProcessorService : IProcessorService
 {
-    public void ProcessEvents() {
-        //Console.WriteLine("Process event");
+    public async Task ProcessEvent(Event e) {
+        Console.WriteLine("Recieved event id: " + e.Id.ToString());
     }
 
     public void CreateIncident(){
