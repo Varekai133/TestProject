@@ -1,26 +1,57 @@
+using Processor.Models;
 using SharedClassLibrary.Models;
 
 namespace Processor.Servicies;
 
 public class ProcessorService : IProcessorService
 {
+    private bool _wait {get; set;}
     public async Task ProcessEvent(Event e) {
-        Console.WriteLine("Recieved event id: " + e.Id.ToString());
+        Console.WriteLine("Recieved event type: " + e.Type.ToString());
+        await CreateIncident(e);
+        //SaveIncidentToDb();
     }
 
-    public void CreateIncident(){
-        throw new NotImplementedException();
+    public async Task<Incident> CreateIncident(Event e) {
+        if (isIncidentSimple(e)) {
+            if (_wait) {
+                Console.WriteLine("Composite");
+                _wait = false;
+                return new Incident {
+                    Id = Guid.NewGuid(),
+                    Type = IncidentTypeEnum.Simple,
+                    Time = DateTime.UtcNow
+                };
+            }
+            else {
+                Console.WriteLine("Simple");
+                return new Incident {
+                    Id = Guid.NewGuid(),
+                    Type = IncidentTypeEnum.Simple,
+                    Time = DateTime.UtcNow
+                };
+            }
+        }
+        if (isIncidentComposite(e)) {
+            if (!_wait) {
+                _wait = true;
+
+                await Task.Delay(20000);
+            }
+        }
+        
+        return null;
     }
 
-    public bool isIncidentComposite(){
-        throw new NotImplementedException();
+    public bool isIncidentSimple(Event e) {
+        return e.Type == EventTypeEnum.Type1;
     }
 
-    public bool isIncidentSimple(){
-        throw new NotImplementedException();
+    public bool isIncidentComposite(Event e) {
+        return e.Type == EventTypeEnum.Type2;
     }
 
-    public void SaveIncidentToDb(){
+    public void SaveIncidentToDb() {
         throw new NotImplementedException();
     }
 

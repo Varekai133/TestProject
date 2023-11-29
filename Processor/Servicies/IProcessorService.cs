@@ -1,12 +1,13 @@
+using Processor.Models;
 using SharedClassLibrary.Models;
 
 namespace Processor.Servicies;
 
 public interface IProcessorService {
     Task ProcessEvent(Event e);
-    void CreateIncident();
+    Task<Incident> CreateIncident(Event e);
     void SaveIncidentToDb();
-    bool isIncidentSimple();
-    bool isIncidentComposite();
+    bool isIncidentSimple(Event e);
+    bool isIncidentComposite(Event e);
     void ShowListOfIncidents();
 }

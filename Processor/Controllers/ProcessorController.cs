@@ -14,7 +14,7 @@ public class ProcessorController : ControllerBase
         _processorService = processorService;
     }
 
-    [HttpPost("ProcessEvents")]
+    [HttpPost("ProcessEvent")]
     public void ReceiceEvent([FromBody] Event e) {
         _processorService.ProcessEvent(e);
     }

@@ -15,13 +15,13 @@ public class GeneratorService : IGeneratorService
     }
 
     public async Task GenerateEvent() {
-        var eventType = (EventTypeEnum)_random.Next(1, Enum.GetValues(typeof(EventTypeEnum)).Length);
+        var eventType = (EventTypeEnum)_random.Next(1, Enum.GetValues(typeof(EventTypeEnum)).Length + 1);
         var newEvent = new Event() {
             Id = Guid.NewGuid(),
             Type = eventType,
             Time = DateTime.UtcNow
         };
-        Console.WriteLine("Generated newEvent: " + newEvent.Id);
+        //Console.WriteLine("Generated newEvent: " + newEvent.Id);
         await SendEventToProcessor(newEvent);
     }
 
@@ -29,7 +29,7 @@ public class GeneratorService : IGeneratorService
         try {
             // var request = _httpContextAccessor.HttpContext?.Request;
             // var baseUri = $"{request.Scheme}://{request.Host}";
-            var apiUrl = "https://localhost:7224/Processor/ProcessEvents"; // TODO: localhost -> host
+            var apiUrl = "https://localhost:7224/Processor/ProcessEvent"; // TODO: localhost -> host
 
             var response = await _client.PostAsJsonAsync(apiUrl, e);
 
