@@ -5,11 +5,14 @@ namespace Processor.Servicies;
 
 public class ProcessorService : IProcessorService
 {
+    private Event _lastEvent { get; set; }
     private bool _isWaitingForType1 {get; set;}
     public async Task ProcessEvent(Event e) {
         Console.WriteLine("Recieved event type: " + e.Type.ToString());
-        await CreateIncident(e);
-        //SaveIncidentToDb();
+        var currentIncident = await CreateIncident(e);
+        if (currentIncident != null) {
+            Console.WriteLine(currentIncident.EventsBasedOn.Count);
+        }
     }
 
     public async Task<Incident> CreateIncident(Event e) {
@@ -20,7 +23,10 @@ public class ProcessorService : IProcessorService
                 return new Incident {
                     Id = Guid.NewGuid(),
                     Type = IncidentTypeEnum.Simple,
-                    Time = DateTime.UtcNow
+                    Time = DateTime.UtcNow,
+                    EventsBasedOn = new List<Event>() {
+                        e, _lastEvent
+                    }
                 };
             }
             else {
@@ -28,14 +34,17 @@ public class ProcessorService : IProcessorService
                 return new Incident {
                     Id = Guid.NewGuid(),
                     Type = IncidentTypeEnum.Simple,
-                    Time = DateTime.UtcNow
+                    Time = DateTime.UtcNow,
+                    EventsBasedOn = new List<Event>() {
+                        e
+                    }
                 };
             }
         }
         if (isIncidentComposite(e)) {
             if (!_isWaitingForType1) {
                 _isWaitingForType1 = true;
-
+                _lastEvent = e;
                 await Task.Delay(20000);
             }
         }
