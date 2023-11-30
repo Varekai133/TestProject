@@ -72,8 +72,8 @@ public class ProcessorService : IProcessorService
     }
 
     public void SaveIncidentToDb(Incident incident) {
-        //_context.Add(incident);
-        //_context.SaveChanges();
+        _context.Add(incident);
+        _context.SaveChanges();
     }
 
     public List<Incident> GetListOfIncidentsOnly() {

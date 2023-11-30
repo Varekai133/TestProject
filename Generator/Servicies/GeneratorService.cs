@@ -7,11 +7,13 @@ namespace Generator.Servicies;
 public class GeneratorService : IGeneratorService
 {
     private readonly HttpClient _client;
-    //private readonly IHttpContextAccessor _httpContextAccessor;
+    private readonly string _listeningAddress;
+    private readonly string _listeningPort;
     private readonly Random _random = new Random();
     
-    public GeneratorService(HttpClient client) {
+    public GeneratorService(HttpClient client, IConfiguration configuration) {
         _client = client;
+        _listeningAddress = (configuration["ASPNETCORE_URLS"] ?? "http://localhost").Split(';').FirstOrDefault() ?? "http://localhost";
     }
 
     public async Task GenerateEvent(int ?type) {
@@ -29,8 +31,8 @@ public class GeneratorService : IGeneratorService
     }
 
     public async Task SendEventToProcessor(Event e) {
-        try {
-            var apiUrl = "https://localhost:7224/Processor/ProcessEvent"; // TODO: localhost -> host
+        try {            
+            var apiUrl = _listeningAddress.ToString() + "/Processor/ProcessEvent";
             var response = await _client.PostAsJsonAsync(apiUrl, e);
             response.EnsureSuccessStatusCode();
         }
