@@ -2,6 +2,10 @@ using Processor.Models;
 using SharedClassLibrary.Models;
 using Processor.Data;
 using Microsoft.EntityFrameworkCore;
+using Processor.Data.DTO;
+using SharedClassLibrary.Data.DTO;
+using Processor.Extensions;
+using SharedClassLibrary.Extensions;
 
 namespace Processor.Servicies;
 
@@ -72,24 +76,24 @@ public class ProcessorService : IProcessorService
         //_context.SaveChanges();
     }
 
-    public List<Incident> ShowListOfIncidents() {
+    public List<Incident> GetListOfIncidentsOnly() {
         var incidentInDb = _context.Incidents.ToList();
         return incidentInDb;
     }
-    public List<Event> ShowListOfEventsBasesOn(Incident incident) {
+    public List<Event> GetListOfEventsBasesOn(Incident incident) {
         var incidentWithEvents = _context.Incidents
             .Include(inc => inc.EventsBasedOn)
             .FirstOrDefault(inc => inc.Id == incident.Id);
         return incidentWithEvents?.EventsBasedOn ?? new List<Event>();
     }
 
-    public List<object> ShowFullList() {
+    public List<object> GetListOfIncidentsAndEventsBasedOn() {
         var fullList = new List<object>();
-        var listOfIncidents = ShowListOfIncidents();
+        var listOfIncidents = GetListOfIncidentsOnly();
         foreach (var incident in listOfIncidents) {
-            if (!fullList.Contains(incident))
-                fullList.Add(incident);
-            fullList.Add(ShowListOfEventsBasesOn(incident));
+            var listOfEventsBasedOn = GetListOfEventsBasesOn(incident);
+            incident.EventsBasedOn = listOfEventsBasedOn;
+            fullList.Add(incident.AsDto());
         }
         return fullList;
     }

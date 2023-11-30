@@ -1,4 +1,6 @@
 using Processor.Models;
+using Processor.Data.DTO;
+using SharedClassLibrary.Data.DTO;
 using SharedClassLibrary.Models;
 
 namespace Processor.Servicies;
@@ -9,7 +11,7 @@ public interface IProcessorService {
     void SaveIncidentToDb(Incident incident);
     bool isIncidentSimple(Event e);
     bool isIncidentComposite(Event e);
-    List<Incident> ShowListOfIncidents();
-    List<Event> ShowListOfEventsBasesOn(Incident incident);
-    List<object> ShowFullList();
+    List<Incident> GetListOfIncidentsOnly();
+    List<Event> GetListOfEventsBasesOn(Incident incident);
+    List<object> GetListOfIncidentsAndEventsBasedOn();
 }

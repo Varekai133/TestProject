@@ -21,6 +21,6 @@ public class ProcessorController : ControllerBase
 
     [HttpGet("GetListOfIncidents")]
     public ActionResult<List<object>> GetListOfIncidents() {
-        return Ok(_processorService.ShowFullList());
+        return Ok(_processorService.GetListOfIncidentsAndEventsBasedOn());
     }
 }

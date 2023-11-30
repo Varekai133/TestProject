@@ -9,7 +9,7 @@
       "EventControlSystem/1.0.0": {
         "dependencies": {
           "Generator": "1.0.0",
-          "Microsoft.EntityFrameworkCore": "6.0.6",
+          "Microsoft.EntityFrameworkCore.Sqlite": "6.0.4",
           "Processor": "1.0.0",
           "Swashbuckle.AspNetCore": "6.5.0"
         },
