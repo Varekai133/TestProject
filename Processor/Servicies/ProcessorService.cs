@@ -1,6 +1,7 @@
 using Processor.Models;
 using SharedClassLibrary.Models;
 using Processor.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Processor.Servicies;
 
@@ -67,11 +68,29 @@ public class ProcessorService : IProcessorService
     }
 
     public void SaveIncidentToDb(Incident incident) {
-        _context.Add(incident);
-        _context.SaveChanges();
+        //_context.Add(incident);
+        //_context.SaveChanges();
     }
 
-    public async Task<List<Incident>> ShowListOfIncidents() {
-        throw new NotImplementedException();
+    public List<Incident> ShowListOfIncidents() {
+        var incidentInDb = _context.Incidents.ToList();
+        return incidentInDb;
+    }
+    public List<Event> ShowListOfEventsBasesOn(Incident incident) {
+        var incidentWithEvents = _context.Incidents
+            .Include(inc => inc.EventsBasedOn)
+            .FirstOrDefault(inc => inc.Id == incident.Id);
+        return incidentWithEvents?.EventsBasedOn ?? new List<Event>();
+    }
+
+    public List<object> ShowFullList() {
+        var fullList = new List<object>();
+        var listOfIncidents = ShowListOfIncidents();
+        foreach (var incident in listOfIncidents) {
+            if (!fullList.Contains(incident))
+                fullList.Add(incident);
+            fullList.Add(ShowListOfEventsBasesOn(incident));
+        }
+        return fullList;
     }
 }

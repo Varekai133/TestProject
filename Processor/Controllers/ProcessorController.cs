@@ -19,8 +19,8 @@ public class ProcessorController : ControllerBase
         _processorService.ProcessEvent(e);
     }
 
-    // [HttpGet("GetListOfIncidents")]
-    // public void GetListOfIncidents() {
-        
-    // }
+    [HttpGet("GetListOfIncidents")]
+    public ActionResult<List<object>> GetListOfIncidents() {
+        return Ok(_processorService.ShowFullList());
+    }
 }
