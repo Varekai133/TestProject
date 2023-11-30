@@ -13,7 +13,7 @@ public class GeneratorController : ControllerBase
     }
 
     [HttpPost("GenerateEventManually")]
-    public void GenerateEventManually() {
-        _generatorService.GenerateEvent();
+    public void GenerateEventManually([FromBody] int ?type) {
+        _generatorService.GenerateEvent(type);
     }
 }

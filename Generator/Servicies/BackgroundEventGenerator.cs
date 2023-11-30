@@ -12,7 +12,7 @@ public class BackgroundEventGenerator : BackgroundService
     }
     protected override async Task ExecuteAsync(CancellationToken stoppingToken) {
         while (!stoppingToken.IsCancellationRequested) {
-            await _generatorService.GenerateEvent();
+            await _generatorService.GenerateEvent(null);
             var sleepTime = _random.Next(0, 2000);
             await Task.Delay(sleepTime, stoppingToken);
         }
