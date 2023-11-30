@@ -15,7 +15,7 @@ public class GeneratorService : IGeneratorService
     }
 
     public async Task GenerateEvent() {
-        var eventType = (EventTypeEnum)_random.Next(1, Enum.GetValues(typeof(EventTypeEnum)).Length + 1);
+        var eventType = (EventTypeEnum)_random.Next(1, Enum.GetValues(typeof(EventTypeEnum)).Length - 1);
         var newEvent = new Event() {
             Id = Guid.NewGuid(),
             Type = eventType,

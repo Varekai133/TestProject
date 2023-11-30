@@ -1,5 +1,7 @@
 using Generator.Servicies;
 using Processor.Servicies;
+using Processor.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,10 +9,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddSingleton<HttpClient>();
+builder.Services.AddDbContext<IncidentsDbContext>(o => o.UseSqlite("filename=../Processor/Data/Database/Incidents.db"), ServiceLifetime.Singleton);
 builder.Services.AddTransient<IGeneratorService, GeneratorService>();
 builder.Services.AddHostedService<BackgroundEventGenerator>();
 builder.Services.AddSingleton<IProcessorService, ProcessorService>();
-builder.Services.AddHostedService<BackgroundIncidentProcessor>();
+builder.Services.AddScoped<BackgroundIncidentProcessor>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

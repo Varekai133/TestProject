@@ -5,7 +5,6 @@ namespace Processor.Servicies;
 public class BackgroundIncidentProcessor : BackgroundService
 {
     private readonly IProcessorService _processorService;
-    private readonly ManualResetEventSlim _eventSignal = new ManualResetEventSlim(false);
 
     public BackgroundIncidentProcessor(IProcessorService processorService) {
         _processorService = processorService;

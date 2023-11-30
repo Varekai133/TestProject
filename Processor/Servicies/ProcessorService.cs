@@ -1,5 +1,6 @@
 using Processor.Models;
 using SharedClassLibrary.Models;
+using Processor.Data;
 
 namespace Processor.Servicies;
 
@@ -7,11 +8,16 @@ public class ProcessorService : IProcessorService
 {
     private Event _lastEvent { get; set; }
     private bool _isWaitingForType1 {get; set;}
+    private readonly IncidentsDbContext _context;
+
+    public ProcessorService(IncidentsDbContext context) => _context = context;
+
     public async Task ProcessEvent(Event e) {
         Console.WriteLine("Recieved event type: " + e.Type.ToString());
         var currentIncident = await CreateIncident(e);
         if (currentIncident != null) {
             Console.WriteLine(currentIncident.EventsBasedOn.Count);
+            SaveIncidentToDb(currentIncident);
         }
     }
 
@@ -22,7 +28,7 @@ public class ProcessorService : IProcessorService
                 _isWaitingForType1 = false;
                 return new Incident {
                     Id = Guid.NewGuid(),
-                    Type = IncidentTypeEnum.Simple,
+                    Type = IncidentTypeEnum.Composite,
                     Time = DateTime.UtcNow,
                     EventsBasedOn = new List<Event>() {
                         e, _lastEvent
@@ -60,11 +66,12 @@ public class ProcessorService : IProcessorService
         return e.Type == EventTypeEnum.Type2;
     }
 
-    public void SaveIncidentToDb() {
-        throw new NotImplementedException();
+    public void SaveIncidentToDb(Incident incident) {
+        _context.Add(incident);
+        _context.SaveChanges();
     }
 
-    public void ShowListOfIncidents() {
+    public async Task<List<Incident>> ShowListOfIncidents() {
         throw new NotImplementedException();
     }
 }

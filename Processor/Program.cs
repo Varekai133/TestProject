@@ -1,13 +1,16 @@
 using Processor.Servicies;
+using Microsoft.EntityFrameworkCore;
+using Processor.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddDbContext<IncidentsDbContext>(o => o.UseSqlite("filename=Data/Database/Incidents.db"), ServiceLifetime.Singleton);
 builder.Services.AddSingleton<HttpClient>();
 builder.Services.AddSingleton<IProcessorService, ProcessorService>();
-builder.Services.AddHostedService<BackgroundIncidentProcessor>();
+builder.Services.AddScoped<BackgroundIncidentProcessor>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

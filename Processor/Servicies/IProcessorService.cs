@@ -6,8 +6,8 @@ namespace Processor.Servicies;
 public interface IProcessorService {
     Task ProcessEvent(Event e);
     Task<Incident> CreateIncident(Event e);
-    void SaveIncidentToDb();
+    void SaveIncidentToDb(Incident incident);
     bool isIncidentSimple(Event e);
     bool isIncidentComposite(Event e);
-    void ShowListOfIncidents();
+    Task<List<Incident>> ShowListOfIncidents();
 }
